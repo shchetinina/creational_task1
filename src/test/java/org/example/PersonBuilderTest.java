@@ -47,6 +47,9 @@ class PersonBuilderTest {
     void createPersonWithoutData(){
         assertThrows(IllegalStateException.class, () -> new PersonBuilder().build());
         assertThrows(IllegalStateException.class, () -> new PersonBuilder().setName("Name").build());
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setName("Name").setLastName("").build());
         assertThrows(IllegalStateException.class, () -> new PersonBuilder().setLastName("Lastname").build());
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setLastName("Lastname").setName("").build());
+        assertDoesNotThrow(() -> new PersonBuilder().setName("Name").setLastName("Lastname").build());
     }
 }
