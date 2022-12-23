@@ -23,7 +23,7 @@ public class Person {
     }
 
     public boolean hasAge(){
-        return age == -1 ? false : true;
+        return age != -1;
     }
 
     public void happyBirthDay(){
@@ -35,7 +35,7 @@ public class Person {
     }
 
     public boolean hasAddress(){
-        return address == null ? false : true;
+        return address != null;
     }
 
     public String getName() {

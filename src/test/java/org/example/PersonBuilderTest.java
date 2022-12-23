@@ -38,6 +38,15 @@ class PersonBuilderTest {
     @Test
     void checkExceptionWhenSetIncorrectNames(){
         assertThrows(IllegalStateException.class, () -> new PersonBuilder().setName(null));
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setName(""));
         assertThrows(IllegalStateException.class, () -> new PersonBuilder().setLastName(null));
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setLastName(""));
+    }
+
+    @Test
+    void createPersonWithoutData(){
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().build());
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setName("Name").build());
+        assertThrows(IllegalStateException.class, () -> new PersonBuilder().setLastName("Lastname").build());
     }
 }

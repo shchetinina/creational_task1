@@ -6,19 +6,21 @@ public class PersonBuilder {
     private int age;
     private String address;
     public Person build(){
+        if (name == null || name.isBlank() || lastName == null || lastName.isBlank())
+            throw new IllegalStateException("You didn't fill name or lastname");
         Person person = new Person(name, lastName, age);
         person.setAddress(address);
         return person;
     }
 
     public PersonBuilder setName(String name) {
-        if (name == null) throw new IllegalStateException("You didn't fill name");
+        if (name == null || name.isBlank()) throw new IllegalStateException("You didn't fill name");
         this.name = name;
         return this;
     }
 
     public PersonBuilder setLastName(String lastName) {
-        if (lastName == null) throw new IllegalStateException("You didn't fill lastname");
+        if (lastName == null || lastName.isBlank()) throw new IllegalStateException("You didn't fill lastname");
         this.lastName = lastName;
         return this;
     }
